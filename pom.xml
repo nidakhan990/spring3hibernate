@@ -4,7 +4,7 @@
 	<groupId>Spring3HibernateApp</groupId>
 	<artifactId>Spring3HibernateApp</artifactId>
 	<packaging>war</packaging>
-        
+
 	<scm>
 		<developerConnection>
 			scm:git:git@github.com:OpsTree/ContinuousIntegration.git
@@ -28,15 +28,20 @@
  </distributionManagement>
 	<reporting>
 		<plugins>
-			 <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version> <!-- Update to a more recent version -->
-            <configuration>
-                <source>1.8</source> <!-- Use Java 8 -->
-                <target>1.8</target> <!-- Use Java 8 -->
-            </configuration>
-        </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.5</version>
+				<configuration>
+					<!-- Enables analysis which takes more memory but finds more bugs. If 
+						you run out of memory, changes the value of the effort element to 'low'. -->
+					<effort>Max</effort>
+					<!-- Reports all bugs (other values are medium and max) -->
+					<threshold>Low</threshold>
+					<!-- Produces XML report -->
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 
@@ -481,8 +486,4 @@
 		</dependency>
 
 	</dependencies>
-
-
-  
-
 </project>
